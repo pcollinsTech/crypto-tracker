@@ -6,6 +6,11 @@ export class Blog extends Component {
     posts: []
   }
 
+  componentDidMount() {
+    
+  }
+  
+
   render() {
     return (
       <Layout>
