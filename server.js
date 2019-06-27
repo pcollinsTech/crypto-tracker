@@ -62,8 +62,8 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 
-function convert(to,from) {
-    return (to / from) * 1
-}
+// function convert(to,from) {
+//     return (to / from) * 1
+// }
 
 

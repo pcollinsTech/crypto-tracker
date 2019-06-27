@@ -71,7 +71,7 @@ export default class MainNav extends React.Component {
                 <Link to="/exchange-finder" className="nav-link">Exchange Finder</Link>
               </NavItem>
               <NavItem>
-                <Link to="/contact" className="nav-link">Resources</Link>
+                <Link to="/blog" className="nav-link">Blog</Link>
               </NavItem>
               <NavItem>
                 <Link to="/about" className="nav-link">About Us</Link>

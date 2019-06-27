@@ -10,7 +10,7 @@ class Layout extends Component {
     return (
       <div>
         <MainNav/>
-        <div className="container mt-5" >
+        <div className="container" style={{marginTop: "80px"}} >
           <main>{this.props.children}</main>
         </div>
         <Footer />

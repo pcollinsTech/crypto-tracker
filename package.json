@@ -20,13 +20,7 @@
     "express": "^4.17.1",
     "express-graphql": "^0.7.1",
     "graphql": "^14.3.1",
-    "node-cron": "^2.0.3",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "react-social-icons": "^4.1.0",
-    "reactstrap": "^8.0.0",
-    "woocommerce-api": "^1.4.2"
+    "node-cron": "^2.0.3"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

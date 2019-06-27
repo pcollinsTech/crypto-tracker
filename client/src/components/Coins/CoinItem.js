@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+// import axios from 'axios';
 
 
 class CointItem extends Component {
@@ -27,35 +27,45 @@ class CointItem extends Component {
 
     }
   render() {
-      console.log("COintItem State", this.state)
-      const {id,
-            name,
-            symbol,
-            rank,
-            price_usd,
-            price_btc,
-            h24_volume_usd,
-            market_cap_usd,
-            available_supply,
-            total_supply,
-            percent_change_1h,
-            percent_change_24h,
-            percent_change_7d,
-            currency
+      const {
+        id,
+        name,
+        symbol,
+        circulating_supply,
+        total_supply,
+        max_supply,
+        // slug,
+        // date_added,
+        // num_market_pairs,
+        cmc_rank,
+        // last_updated,
+        quote:{
+            USD: {
+                price,
+                volume_24h,
+                // percent_change_1h,
+                percent_change_24h,
+                // percent_change_7d,
+                market_cap,
+            }
+        }
       } = this.state.coin;
-      let price = parseFloat(price_usd).toFixed(2);
+      let price_usd = parseFloat(price).toFixed(2);
+      let volume = parseFloat(volume_24h).toFixed(2);
+      let marketCap = parseFloat(market_cap).toFixed(2);
+      let percentage = parseFloat(percent_change_24h).toFixed(2);
       return (
-          <tr>
-              <th scope="row">{rank}</th>
+          <tr key={id}>
+              <th scope="row">{cmc_rank}</th>
               <td>{name}</td>
-              {/* <td>{symbol}</td> */}
-              <td>{price}</td>
-              <td>{price_btc}</td>
-              {/* <td>{h24_volume_usd}</td> */}
-              <td>{market_cap_usd}</td>
-              <td>{available_supply}</td>
+              <td>{symbol}</td>
+              <td>{price_usd}</td>
+              <td>{max_supply}</td>
+              <td>{volume}</td>
+              <td>{marketCap}</td>
+              <td>{circulating_supply}</td>
               <td>{total_supply}</td>
-              <td>{percent_change_24h}%</td>
+              <td>{percentage}%</td>
           </tr>
       );
   }

@@ -12,9 +12,10 @@ import Index from './pages/index'
 import About from './pages/about'
 import Academy from './pages/academy'
 import ExchangeFinder from './pages/exchangfinder';
+import Blog from './pages/blog';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8080/graphql'
+  uri: 'http://localhost:5000/graphql'
 });
 
 class App extends Component { 
@@ -31,6 +32,7 @@ class App extends Component {
           <Route exact path="/academy" component={Academy} />
             {/* <Route exact path="/coin/:id" component={Coin} /> */}
           <Route  path="/about" component={About} />
+          <Route  path="/blog" component={Blog} />
           <Route  path="/exchange-finder" component={ExchangeFinder} />
         </Router>
       </ApolloProvider>
