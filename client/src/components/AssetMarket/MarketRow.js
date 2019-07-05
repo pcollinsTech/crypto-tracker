@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 // import axios from 'axios';
 
 function numberWithCommas(x) {
@@ -15,7 +15,7 @@ const MarketRow = ({ market }) => {
     return (
         <tr key={exchangeId}>
             <th scope="row">{exchangeId}</th>
-            <td>BTC</td>
+            <td>{baseSymbol}</td>
             <td>${price_usd}</td>
             <td>${volume}</td>
             <td>{percentage}%</td>

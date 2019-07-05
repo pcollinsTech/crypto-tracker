@@ -1,0 +1,5 @@
+export const GET_EXCHANGES = "GET_EXCHANGES";
+export const GET_POSTS = "GET_POSTS";
+export const GET_CRYPTO_PRICES = "GET_CRYPTO_PRICES";
+export const GET_FIAT_PRICES = "GET_FIAT_PRICES";
+export const SET_LOADING = "SET_LOADING";

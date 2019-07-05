@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLFloat } = require("graphql");
+const { GraphQLObjectType, GraphQLString, GraphQLFloat } = require("graphql");
 
 const AssetMarketType = new GraphQLObjectType({
     name: "AssetMarket",

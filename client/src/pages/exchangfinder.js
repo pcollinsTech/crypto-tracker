@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import Layout from "../modules/Layout";
+import Layout from "../layout/Layout";
 import SearchForm from "../components/SearchForm";
 import AssetMarket from "../components/AssetMarket";
 
 export class ExchangeFinder extends Component {
+    searchExchanges = () => {};
+
     render() {
         return (
             <Layout>

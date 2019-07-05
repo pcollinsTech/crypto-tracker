@@ -1,33 +1,8 @@
 import React, { Component } from "react";
-import Layout from "../modules/Layout";
+import Layout from "../layout/Layout";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import PostItem from "../components/PostItem";
-
-const POSTS_QUERY = gql`
-    query PostsQuery {
-        posts {
-            date
-            type
-            id
-            slug
-            status
-            title {
-                rendered
-            }
-            content {
-                rendered
-            }
-            excerpt {
-                rendered
-            }
-            author
-            featured_media
-            comment_status
-            categories
-        }
-    }
-`;
 
 export class Blog extends Component {
     render() {

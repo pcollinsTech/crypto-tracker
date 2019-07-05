@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Layout from '../modules/Layout';
+import Layout from '../layout/Layout';
 
 export class Academy extends Component {
   render() {

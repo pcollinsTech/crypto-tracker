@@ -1,43 +1,42 @@
-import React, { Component } from 'react';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Component } from "react";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 // import Coins from './components/Coins';
 // import Coin from './components/Coin';
-import './sass/app.scss';
-
+import "./sass/app.scss";
 
 //Pages
-import Index from './pages/index'
-import About from './pages/about'
-import Academy from './pages/academy'
-import ExchangeFinder from './pages/exchangfinder';
-import Blog from './pages/blog';
+import Index from "./pages/index";
+import About from "./pages/about";
+import Academy from "./pages/academy";
+import ExchangeFinder from "./pages/exchangfinder";
+import Blog from "./pages/blog";
+import ExchangeState from "./context/exchange/ExchangeState";
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql'
+    uri: "http://localhost:5000/graphql"
 });
 
-class App extends Component { 
-  
-  searchExchanges = (state) => {
-    
-  }
+class App extends Component {
+    searchExchanges = state => {};
 
-  render() {
-    return (
-      <ApolloProvider client={client}>
-        <Router>
-          <Route exact path="/" component={Index} />
-          <Route exact path="/academy" component={Academy} />
-            {/* <Route exact path="/coin/:id" component={Coin} /> */}
-          <Route  path="/about" component={About} />
-          <Route  path="/blog" component={Blog} />
-          <Route  path="/exchange-finder" component={ExchangeFinder} />
-        </Router>
-      </ApolloProvider>
-    );
-  }
+    render() {
+        return (
+            <ApolloProvider client={client}>
+                <ExchangeState>
+                    <Router>
+                        <Route exact path="/" component={Index} />
+                        <Route exact path="/academy" component={Academy} />
+                        {/* <Route exact path="/coin/:id" component={Coin} /> */}
+                        <Route path="/about" component={About} />
+                        <Route path="/blog" component={Blog} />
+                        <Route path="/exchange-finder" component={ExchangeFinder} />
+                    </Router>
+                </ExchangeState>
+            </ApolloProvider>
+        );
+    }
 }
 
 export default App;
