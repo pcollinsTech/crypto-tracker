@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import Layout from "../layout/Layout";
+import PostItem from "../components/PostItem";
 
-export class About extends Component {
+export class Blog extends Component {
     render() {
         return (
             <Layout>
-                <h1>About</h1>
+                <h1>Blog Page</h1>
             </Layout>
         );
     }
 }
 
-export default About;
+export default Blog;

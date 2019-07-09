@@ -1,10 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
+import Layout from "../layout/Layout";
 
 const Index = () => {
     return (
-        <Fragment>
+        <Layout>
             <h1>Home</h1>
-        </Fragment>
+        </Layout>
     );
 };
 

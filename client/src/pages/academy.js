@@ -1,10 +1,11 @@
-import React, { Fragment } from "react";
+import React, { useState } from "react";
+import Layout from "../layout/Layout";
 
 const Academy = () => {
     return (
-        <Fragment>
+        <Layout>
             <h1>Academy</h1>
-        </Fragment>
+        </Layout>
     );
 };
 

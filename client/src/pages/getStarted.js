@@ -1,10 +1,11 @@
-import React, { Fragment } from "react";
+import React, { useState } from "react";
+import Layout from "../layout/Layout";
 
 const GetStarted = () => {
     return (
-        <Fragment>
+        <Layout>
             <h1>Get Starter</h1>
-        </Fragment>
+        </Layout>
     );
 };
 

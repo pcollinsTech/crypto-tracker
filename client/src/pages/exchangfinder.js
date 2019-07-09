@@ -1,7 +1,8 @@
-import React, { useContext, Fragment, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import SearchForm from "../components/SearchForm";
 import AssetMarket from "../components/AssetMarket";
 import ExchangeContext from "../context/exchange/exchangeContext";
+import Layout from "../layout/Layout";
 
 const ExchangeFinder = () => {
     const exchangeContext = useContext(ExchangeContext);
@@ -15,12 +16,14 @@ const ExchangeFinder = () => {
         getPayments();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
+    const searchExchanges = () => {
+        return;
+    };
     return (
-        <Fragment>
-            <SearchForm searchExchanges={this.searchExchanges} />
+        <Layout>
+            <SearchForm searchExchanges={searchExchanges} />
             <AssetMarket />
-        </Fragment>
+        </Layout>
     );
 };
 
