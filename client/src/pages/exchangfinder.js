@@ -1,19 +1,27 @@
-import React, { Component } from "react";
-import Layout from "../layout/Layout";
+import React, { useContext, Fragment, useEffect } from "react";
 import SearchForm from "../components/SearchForm";
 import AssetMarket from "../components/AssetMarket";
+import ExchangeContext from "../context/exchange/exchangeContext";
 
-export class ExchangeFinder extends Component {
-    searchExchanges = () => {};
+const ExchangeFinder = () => {
+    const exchangeContext = useContext(ExchangeContext);
 
-    render() {
-        return (
-            <Layout>
-                <SearchForm searchExchanges={this.searchExchanges} />
-                <AssetMarket />
-            </Layout>
-        );
-    }
-}
+    const { getExchanges, getCryptos, getCountries, getPayments } = exchangeContext;
+
+    useEffect(() => {
+        getExchanges();
+        getCryptos();
+        getCountries();
+        getPayments();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    return (
+        <Fragment>
+            <SearchForm searchExchanges={this.searchExchanges} />
+            <AssetMarket />
+        </Fragment>
+    );
+};
 
 export default ExchangeFinder;

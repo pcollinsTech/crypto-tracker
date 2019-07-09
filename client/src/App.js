@@ -11,8 +11,9 @@ import Index from "./pages/index";
 import About from "./pages/about";
 import Academy from "./pages/academy";
 import ExchangeFinder from "./pages/exchangfinder";
-import Blog from "./pages/blog";
+// import Blog from "./pages/blog";
 import ExchangeState from "./context/exchange/ExchangeState";
+import Layout from "./layout/Layout";
 
 const client = new ApolloClient({
     uri: "http://localhost:5000/graphql"
@@ -25,14 +26,16 @@ class App extends Component {
         return (
             <ApolloProvider client={client}>
                 <ExchangeState>
-                    <Router>
-                        <Route exact path="/" component={Index} />
-                        <Route exact path="/academy" component={Academy} />
-                        {/* <Route exact path="/coin/:id" component={Coin} /> */}
-                        <Route path="/about" component={About} />
-                        <Route path="/blog" component={Blog} />
-                        <Route path="/exchange-finder" component={ExchangeFinder} />
-                    </Router>
+                    <Layout>
+                        <Router>
+                            <Route exact path="/" component={Index} />
+                            <Route exact path="/academy" component={Academy} />
+                            {/* <Route exact path="/coin/:id" component={Coin} /> */}
+                            <Route path="/about" component={About} />
+                            {/* <Route path="/blog" component={Blog} /> */}
+                            <Route path="/exchange-finder" component={ExchangeFinder} />
+                        </Router>
+                    </Layout>
                 </ExchangeState>
             </ApolloProvider>
         );

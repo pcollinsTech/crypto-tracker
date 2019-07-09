@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
-import Layout from '../layout/Layout';
+import React, { Component, Fragment } from "react";
 
 export class About extends Component {
-  render() {
-    return (
-      <Layout>
-        <h1>About</h1>
-      </Layout>
-    )
-  }
+    render() {
+        return (
+            <Fragment>
+                <h1>About</h1>
+            </Fragment>
+        );
+    }
 }
 
-export default About
+export default About;

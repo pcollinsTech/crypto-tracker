@@ -1,14 +1,11 @@
-import React, { Component } from 'react'
-import Layout from '../layout/Layout';
+import React, { Fragment } from "react";
 
-export class Academy extends Component {
-  render() {
+const Academy = () => {
     return (
-      <Layout>
-        <h1>Academy</h1>
-      </Layout>
-    )
-  }
-}
+        <Fragment>
+            <h1>Academy</h1>
+        </Fragment>
+    );
+};
 
-export default Academy
+export default Academy;

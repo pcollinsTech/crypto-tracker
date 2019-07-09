@@ -1,91 +1,69 @@
-import React, { Component } from "react";
+import React, { useContext, useState } from "react";
 import Select from "react-select";
-import countries from "../static/countries";
+import ExchangeContext from "../context/exchange/exchangeContext";
 
-const cryptCurrencies = [
-    { value: "bitcoin", label: "Bitcoin - BTC" },
-    { value: "ethereum", label: "Ethereum - ETH" },
-    { value: "ripple", label: "Ripple - XRP" },
-    { value: "litecoin", label: "Litecoin - LTC" }
-];
-const fiatCurrencies = [
-    { value: "gbp", label: "GBP - Pound" },
-    { value: "strawberry", label: "USD - Dollar" },
-    { value: "vanilla", label: "EUR - Euro" }
-];
-const location = countries;
+const SearchForm = () => {
+    const exchangeContext = useContext(ExchangeContext);
 
-const paymentOptions = [
-    { value: "visa", label: "Visa" },
-    { value: "credit", label: "Credit Card" },
-    { value: "bank", label: "Bank Transfer" },
-    { value: "paypal", label: "PayPal" }
-];
+    const { loading, cryptoOptions, countryOptions, paymentOptions, fiatOptions, setSearch } = exchangeContext;
 
-class SearchForm extends Component {
-    state = {
-        cryptoChoices: null,
-        fiatChoices: null,
-        locationChoices: null,
-        paymentChoices: null
+    const [payments, setPayments] = useState([]);
+    const [fiats, setFiats] = useState([]);
+    const [cryptos, setCryptos] = useState([]);
+    const [countries, setCountries] = useState([]);
+
+    const cryptoChange = cryptos => setCryptos(cryptos);
+    const fiatChange = fiats => setFiats(fiats);
+    const paymentChange = payments => setPayments(payments);
+    const countryChange = countries => setCountries(countries);
+
+    const clear = () => {
+        setPayments([]);
+        setFiats([]);
+        setCryptos([]);
+        setCountries([]);
     };
-
-    cryptoChange = cryptoChoices => {
-        this.setState({ ...this.state, cryptoChoices });
-    };
-
-    fiatChange = fiatChoices => {
-        this.setState({ ...this.state, fiatChoices });
-    };
-
-    locationChange = locationChoices => {
-        this.setState({ ...this.state, locationChoices });
-    };
-
-    paymentChange = paymentChoices => {
-        this.setState({ ...this.state, paymentChoices });
-    };
-
-    onSubmit = e => {
+    const onSubmit = e => {
         e.preventDefault();
-        this.props.searchExchanges(this.state);
+        setSearch({
+            payments,
+            fiats,
+            cryptos,
+            countries
+        });
     };
+    return (
+        <div>
+            <form className="form">
+                <label className="my-1 mr-2" htmlFor="iWantToBuyWith">
+                    I want to buy
+                </label>
+                <Select name="cryptoChoices" value={cryptos} onChange={cryptoChange} options={cryptoOptions} isMulti />
 
-    render() {
-        const { cryptoChoices, fiatChoices, locationChoices, paymentChoices } = this.state;
-        return (
-            <div>
-                <form className="form">
-                    <label className="my-1 mr-2" htmlFor="iWantToBuyWith">
-                        I want to buy
-                    </label>
-                    <Select name="cryptoChoices" value={cryptoChoices} onChange={this.cryptoChange} options={cryptCurrencies} isMulti />
+                <label className="my-1 mr-2" htmlFor="iWantToPayWith">
+                    I want to buy with
+                </label>
+                <Select name="fiatChoices" value={fiats} onChange={fiatChange} options={fiatOptions} isMulti />
 
-                    <label className="my-1 mr-2" htmlFor="iWantToPayWith">
-                        I want to buy with
-                    </label>
-                    <Select name="fiatChoices" value={fiatChoices} onChange={this.fiatChange} options={fiatCurrencies} isMulti />
+                <label className="my-1 mr-2" htmlFor="iLiveIn">
+                    I live in
+                </label>
+                <Select name="locationChoices" value={countries} onChange={countryChange} options={countryOptions} isMulti />
 
-                    <label className="my-1 mr-2" htmlFor="iLiveIn">
-                        I live in
-                    </label>
-                    <Select name="locationChoices" value={locationChoices} onChange={this.locationChange} options={location} isMulti />
+                <label className="my-1 mr-2" htmlFor="iWantToPayWith">
+                    I want to pay with
+                </label>
+                <Select name="paymentChoices" value={payments} onChange={paymentChange} options={paymentOptions} isMulti />
 
-                    <label className="my-1 mr-2" htmlFor="iWantToPayWith">
-                        I want to pay with
-                    </label>
-                    <Select name="paymentChoices" value={paymentChoices} onChange={this.paymentChange} options={paymentOptions} isMulti />
-
-                    <button type="submit" className="btn btn-primary my-1">
-                        Submit
-                    </button>
-                    <button onClick={this.props.clearUsers} className="btn btn-light my-1">
-                        Clear
-                    </button>
-                </form>
-            </div>
-        );
-    }
-}
+                <button type="submit" className="btn btn-primary my-1" onClick={onSubmit}>
+                    Submit
+                </button>
+                <button onClick={clear} className="btn btn-light my-1">
+                    Clear
+                </button>
+            </form>
+        </div>
+    );
+};
 
 export default SearchForm;

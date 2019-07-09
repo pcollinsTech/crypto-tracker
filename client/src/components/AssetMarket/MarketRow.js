@@ -8,15 +8,14 @@ function numberWithCommas(x) {
 }
 
 const MarketRow = ({ market }) => {
-    const { exchangeId, baseSymbol, volumeUsd24Hr, priceUsd, volumePercent } = market;
-    let price_usd = numberWithCommas(parseFloat(priceUsd).toFixed(2));
-    let volume = numberWithCommas(parseFloat(volumeUsd24Hr).toFixed(2));
-    let percentage = numberWithCommas(parseFloat(volumePercent).toFixed(2));
+    const { id, name, volume_24hr_usd, percent_total_volume } = market;
+    let volume = numberWithCommas(parseFloat(volume_24hr_usd).toFixed(2));
+    let percentage = numberWithCommas(
+        parseFloat(percent_total_volume).toFixed(2)
+    );
     return (
-        <tr key={exchangeId}>
-            <th scope="row">{exchangeId}</th>
-            <td>{baseSymbol}</td>
-            <td>${price_usd}</td>
+        <tr key={id}>
+            <th scope="row">{name}</th>
             <td>${volume}</td>
             <td>{percentage}%</td>
         </tr>

@@ -6,11 +6,7 @@ import ExchangeContext from "../../context/exchange/exchangeContext";
 const AssetMarket = () => {
     const exchangeContext = useContext(ExchangeContext);
 
-    const { getExchanges, exchanges, loading } = exchangeContext;
-    useEffect(() => {
-        getExchanges();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    const { loading, exchanges } = exchangeContext;
 
     if (loading) return <Spinner />;
 

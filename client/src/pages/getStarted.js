@@ -1,14 +1,11 @@
-import React, { Component } from 'react'
-import Layout from '../layout/Layout';
+import React, { Fragment } from "react";
 
-export class GetStarted extends Component {
-  render() {
+const GetStarted = () => {
     return (
-      <Layout>
-        <h1>Get Starter</h1>
-      </Layout>
-    )
-  }
-}
+        <Fragment>
+            <h1>Get Starter</h1>
+        </Fragment>
+    );
+};
 
-export default GetStarted
+export default GetStarted;

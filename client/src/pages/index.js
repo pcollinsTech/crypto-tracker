@@ -1,14 +1,11 @@
-import React, { Component } from 'react'
-import Layout from '../layout/Layout'
+import React, { Fragment } from "react";
 
-export class Index extends Component {
-  render() {
+const Index = () => {
     return (
-      <Layout>
+        <Fragment>
             <h1>Home</h1>
-      </Layout>
-    )
-  }
-}
+        </Fragment>
+    );
+};
 
-export default Index
+export default Index;
