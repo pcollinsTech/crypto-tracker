@@ -36,10 +36,11 @@ const AssetMarket = () => {
                         </th>
                     </tr>
                 </thead>
-
-                {exchanges.map(market => (
-                    <MarketRow key={market.id} market={market} />
-                ))}
+                <tbody>
+                    {exchanges.map(market => (
+                        <MarketRow key={market.id} market={market} />
+                    ))}
+                </tbody>
             </table>
         </Fragment>
     );

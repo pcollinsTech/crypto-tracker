@@ -7,13 +7,14 @@ import Layout from "../layout/Layout";
 const ExchangeFinder = () => {
     const exchangeContext = useContext(ExchangeContext);
 
-    const { getExchanges, getCryptos, getCountries, getPayments } = exchangeContext;
+    const { getExchanges, getCryptos, getCountries, getPayments, getFiats } = exchangeContext;
 
     useEffect(() => {
         getExchanges();
         getCryptos();
         getCountries();
         getPayments();
+        getFiats();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const searchExchanges = () => {
@@ -21,8 +22,10 @@ const ExchangeFinder = () => {
     };
     return (
         <Layout>
-            <SearchForm searchExchanges={searchExchanges} />
-            <AssetMarket />
+            <div className="container">
+                <SearchForm searchExchanges={searchExchanges} />
+                <AssetMarket />
+            </div>
         </Layout>
     );
 };

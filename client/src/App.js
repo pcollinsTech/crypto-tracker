@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import Coins from './components/Coins';
 // import Coin from './components/Coin';
@@ -15,28 +13,22 @@ import ExchangeFinder from "./pages/exchangfinder";
 import ExchangeState from "./context/exchange/ExchangeState";
 import Exchange from "./components/Exchange";
 
-const client = new ApolloClient({
-    uri: "http://localhost:5000/graphql"
-});
-
 class App extends Component {
     searchExchanges = state => {};
 
     render() {
         return (
-            <ApolloProvider client={client}>
-                <ExchangeState>
-                    <Router>
-                        <Route exact path="/" component={Index} />
-                        <Route exact path="/academy" component={Academy} />
-                        {/* <Route exact path="/coin/:id" component={Coin} /> */}
-                        <Route path="/about" component={About} />
-                        <Route path="/exchange/:id" component={Exchange} />
-                        {/* <Route path="/blog" component={Blog} /> */}
-                        <Route path="/exchange-finder" component={ExchangeFinder} />
-                    </Router>
-                </ExchangeState>
-            </ApolloProvider>
+            <ExchangeState>
+                <Router>
+                    <Route exact path="/" component={Index} />
+                    <Route exact path="/academy" component={Academy} />
+                    {/* <Route exact path="/coin/:id" component={Coin} /> */}
+                    <Route path="/about" component={About} />
+                    <Route path="/exchange/:id" component={Exchange} />
+                    {/* <Route path="/blog" component={Blog} /> */}
+                    <Route path="/exchange-finder" component={ExchangeFinder} />
+                </Router>
+            </ExchangeState>
         );
     }
 }

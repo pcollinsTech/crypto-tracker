@@ -1,10 +1,10 @@
 import React from "react";
 import Layout from "../layout/Layout";
-
+import Banner from "../components/Banner";
 const Index = () => {
     return (
         <Layout>
-            <h1>Home</h1>
+            <Banner />
         </Layout>
     );
 };

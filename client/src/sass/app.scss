@@ -1,9 +1,14 @@
+//Exolot Theme Files
+
+@import "exolot_style";
+@import "exolot_popup";
+@import "exolot_responsive";
+
 @import "settings";
 
-
 //modules
-@import 'modules/navbar';
-@import 'modules/footer';
+@import "modules/navbar";
+@import "modules/footer";
 
 // components
-@import 'components/postItem'
+@import "components/postItem";

@@ -100,6 +100,7 @@ const ExchangeState = props => {
         setLoading();
         const res = await axios.get(`http://api.crypto.local/api/fiats`);
         setFiats(res.data);
+        console.log("Fiats", res.data);
         dispatch({
             type: GET_FIATS,
             payload: res.data
@@ -115,7 +116,12 @@ const ExchangeState = props => {
         });
     };
 
-    const setSearch = data => {};
+    const setSearch = ({ payments, fiats, cryptos, countries }) => {
+        console.log("payments", payments);
+        console.log("fiats", fiats);
+        console.log("cryptos", cryptos);
+        console.log("countries", countries);
+    };
     // Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING });
     return (
