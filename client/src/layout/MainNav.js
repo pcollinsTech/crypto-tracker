@@ -38,7 +38,7 @@ class NavBar extends Component {
                     id="navbar"
                     bg="light"
                     expand="lg"
-                    className="navbar navbar-expand-lg navbar-light bg-light"
+                    className="navbar navbar-expand-lg "
                     collapseOnSelect={true}
                 >
                     <Container>
@@ -47,17 +47,30 @@ class NavBar extends Component {
                                 <span>C</span>ryto<span>C</span>oach
                             </Link>
                         </Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" id="collaspe-btn" />
+                        <Navbar.Toggle
+                            aria-controls="basic-navbar-nav"
+                            id="collaspe-btn"
+                        />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
                                 <Nav.Item>
-                                    <Link to="/" className="nav-link" onClick={this.closeNavbar}>
+                                    <Link
+                                        to="/"
+                                        className="nav-link"
+                                        onClick={this.closeNavbar}
+                                    >
                                         Home
                                     </Link>
                                 </Nav.Item>
 
                                 <Nav.Item>
-                                    <Link to="/get-started" offset={-70} duration={800} className="nav-link" onClick={this.closeNavbar}>
+                                    <Link
+                                        to="/get-started"
+                                        offset={-70}
+                                        duration={800}
+                                        className="nav-link"
+                                        onClick={this.closeNavbar}
+                                    >
                                         Getting Started
                                     </Link>
                                 </Nav.Item>
@@ -86,19 +99,33 @@ class NavBar extends Component {
                                 </NavDropdown> */}
 
                                 <Nav.Item>
-                                    <Link to="/exchange-finder" offset={-70} duration={800} className="nav-link" onClick={this.closeNavbar}>
+                                    <Link
+                                        to="/exchange-finder"
+                                        offset={-70}
+                                        duration={800}
+                                        className="nav-link"
+                                        onClick={this.closeNavbar}
+                                    >
                                         Exchange Finder
                                     </Link>
                                 </Nav.Item>
 
                                 <Nav.Item>
-                                    <Link to="/blog" className="nav-link" onClick={this.closeNavbar}>
+                                    <Link
+                                        to="/blog"
+                                        className="nav-link"
+                                        onClick={this.closeNavbar}
+                                    >
                                         Blog
                                     </Link>
                                 </Nav.Item>
 
                                 <Nav.Item>
-                                    <Link to="about" className="nav-link" onClick={this.closeNavbar}>
+                                    <Link
+                                        to="about"
+                                        className="nav-link"
+                                        onClick={this.closeNavbar}
+                                    >
                                         About Us
                                     </Link>
                                 </Nav.Item>

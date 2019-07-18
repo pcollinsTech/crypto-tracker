@@ -8,11 +8,46 @@ import {
     SET_CRYPTO_OPTIONS,
     SET_PAYMENT_OPTIONS,
     SET_COUNTRY_OPTIONS,
-    SET_FIAT_OPTIONS
+    SET_FIAT_OPTIONS,
+    SET_SEARCHED_EXCHANGES,
+    FILTER_BY_CRYPTOS,
+    FILTER_BY_FIATS,
+    FILTER_BY_COUNTRIES,
+    FILTER_BY_PAYMENTS
 } from "../types";
 
 export default (state, action) => {
     switch (action.type) {
+        case FILTER_BY_FIATS:
+            return {
+                ...state,
+                filteredExchanges: action.payload,
+                loading: false
+            };
+        case FILTER_BY_CRYPTOS:
+            return {
+                ...state,
+                filteredExchanges: action.payload,
+                loading: false
+            };
+        case FILTER_BY_COUNTRIES:
+            return {
+                ...state,
+                filteredExchanges: action.payload,
+                loading: false
+            };
+        case FILTER_BY_PAYMENTS:
+            return {
+                ...state,
+                filteredExchanges: action.payload,
+                loading: false
+            };
+        case SET_SEARCHED_EXCHANGES:
+            return {
+                ...state,
+                filteredExchanges: action.payload,
+                loading: false
+            };
         case GET_EXCHANGES:
             return {
                 ...state,

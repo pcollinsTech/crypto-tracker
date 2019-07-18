@@ -12,8 +12,20 @@ import {
     SET_CRYPTO_OPTIONS,
     SET_PAYMENT_OPTIONS,
     SET_COUNTRY_OPTIONS,
-    SET_FIAT_OPTIONS
+    SET_FIAT_OPTIONS,
+    SET_SEARCHED_EXCHANGES,
+    FILTER_BY_CRYPTOS,
+    FILTER_BY_FIATS,
+    FILTER_BY_COUNTRIES,
+    FILTER_BY_PAYMENTS
 } from "../types";
+import sortExchange from "./sortExchange";
+
+function removeDuplicates(myArr, prop) {
+    return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+    });
+}
 
 const ExchangeState = props => {
     const inititalState = {
@@ -22,6 +34,7 @@ const ExchangeState = props => {
         cryptos: [],
         fiats: [],
         payments: [],
+        filteredExchanges: [],
         countryOptions: [],
         cryptoOptions: [],
         paymentOptions: [],
@@ -100,7 +113,6 @@ const ExchangeState = props => {
         setLoading();
         const res = await axios.get(`http://api.crypto.local/api/fiats`);
         setFiats(res.data);
-        console.log("Fiats", res.data);
         dispatch({
             type: GET_FIATS,
             payload: res.data
@@ -116,11 +128,133 @@ const ExchangeState = props => {
         });
     };
 
-    const setSearch = ({ payments, fiats, cryptos, countries }) => {
-        console.log("payments", payments);
-        console.log("fiats", fiats);
-        console.log("cryptos", cryptos);
-        console.log("countries", countries);
+    const filterByCryptos = cryptos => {
+        setLoading();
+
+        console.log("excahngestate", cryptos);
+        let data = [];
+        if (state.filteredExchanges.length >= 1) {
+            cryptos.forEach(crypto => {
+                state.filteredExchanges.map((exchange, id) => {
+                    if (exchange.cryptos.includes(crypto.value)) {
+                        return data.push(exchange);
+                    }
+                });
+            });
+        } else if (state.filteredExchanges.length === 0) {
+            state.exchanges.map(exchange => {
+                cryptos.forEach(crypto => {
+                    console.log("SUP");
+                    if (exchange.cryptos.includes(crypto.value)) {
+                        return data.push(exchange);
+                    }
+                });
+            });
+        }
+        let filteredData = removeDuplicates(data, "id");
+        dispatch({
+            type: FILTER_BY_CRYPTOS,
+            payload: filteredData
+        });
+    };
+
+    const filterByCountries = countries => {
+        setLoading();
+
+        console.log("HIHI", countries);
+        var data = [];
+        if (state.filteredExchanges.length >= 1) {
+            state.filteredExchanges.map(exchange => {
+                countries.forEach(country => {
+                    if (exchange.counties.includes(country.value)) {
+                        return data.push(exchange);
+                    }
+                });
+            });
+        } else {
+            state.exchanges.map(exchange => {
+                countries.forEach(country => {
+                    if (exchange.counties.includes(country.value)) {
+                        return data.push(exchange);
+                    }
+                });
+            });
+        }
+
+        dispatch({
+            type: FILTER_BY_COUNTRIES,
+            payload: data
+        });
+    };
+
+    const filterByFiats = fiats => {
+        setLoading();
+
+        console.log("HIHI", fiats);
+        var data = [];
+        if (state.filteredExchanges.length >= 1) {
+            state.filteredExchanges.map(exchange => {
+                fiats.forEach(fiat => {
+                    if (exchange.fiats.includes(fiat.value)) {
+                        return data.push(exchange);
+                    }
+                });
+            });
+        } else {
+            state.exchanges.map(exchange => {
+                fiats.forEach(fiat => {
+                    if (exchange.fiats.includes(fiat.value)) {
+                        return data.push(exchange);
+                    }
+                });
+            });
+        }
+
+        dispatch({
+            type: FILTER_BY_FIATS,
+            payload: data
+        });
+    };
+
+    const filterByPayments = payments => {
+        setLoading();
+
+        var data = [];
+        if (state.filteredExchanges.length >= 1) {
+            state.filteredExchanges.map(exchange => {
+                payments.forEach(payment => {
+                    if (exchange.payments.includes(payment.value)) {
+                        return data.push(exchange);
+                    }
+                });
+            });
+        } else {
+            state.exchanges.map(exchange => {
+                payments.forEach(payment => {
+                    if (exchange.payments.includes(payment.value)) {
+                        return data.push(exchange);
+                    }
+                });
+            });
+        }
+
+        dispatch({
+            type: FILTER_BY_PAYMENTS,
+            payload: data
+        });
+    };
+
+    const setSearch = filters => {
+        setLoading();
+        const newExhangeList = [];
+        console.log("state setsearch", state.exchanges);
+        sortExchange(filters, state.exchanges);
+
+        console.log("Set State", filters);
+        dispatch({
+            type: SET_SEARCHED_EXCHANGES,
+            payload: newExhangeList
+        });
     };
     // Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING });
@@ -132,6 +266,7 @@ const ExchangeState = props => {
                 cryptos: state.cryptos,
                 fiats: state.fiats,
                 payments: state.payments,
+                filteredExchanges: state.filteredExchanges,
                 countryOptions: state.countryOptions,
                 cryptoOptions: state.cryptoOptions,
                 paymentOptions: state.paymentOptions,
@@ -142,6 +277,10 @@ const ExchangeState = props => {
                 getCryptos,
                 getCountries,
                 getPayments,
+                filterByCryptos,
+                filterByFiats,
+                filterByPayments,
+                filterByCountries,
                 setSearch
             }}
         >

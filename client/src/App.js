@@ -7,9 +7,10 @@ import "./sass/app.scss";
 //Pages
 import Index from "./pages/index";
 import About from "./pages/about";
+import GetStarted from "./pages/getStarted";
 import Academy from "./pages/academy";
 import ExchangeFinder from "./pages/exchangfinder";
-// import Blog from "./pages/blog";
+import Blog from "./pages/blog";
 import ExchangeState from "./context/exchange/ExchangeState";
 import Exchange from "./components/Exchange";
 
@@ -22,10 +23,10 @@ class App extends Component {
                 <Router>
                     <Route exact path="/" component={Index} />
                     <Route exact path="/academy" component={Academy} />
-                    {/* <Route exact path="/coin/:id" component={Coin} /> */}
+                    <Route exact path="/get-started" component={GetStarted} />
                     <Route path="/about" component={About} />
                     <Route path="/exchange/:id" component={Exchange} />
-                    {/* <Route path="/blog" component={Blog} /> */}
+                    <Route path="/blog" component={Blog} />
                     <Route path="/exchange-finder" component={ExchangeFinder} />
                 </Router>
             </ExchangeState>
