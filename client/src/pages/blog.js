@@ -1,15 +1,28 @@
-import React, { Component } from "react";
+import React, { useContext, useEffect } from "react";
+import PostContext from "../context/post/postContext";
 import Layout from "../layout/Layout";
-import PostItem from "../components/PostItem";
+import News from "../components/News";
 
-export class Blog extends Component {
-    render() {
-        return (
-            <Layout>
-                <h1>Blog Page</h1>
-            </Layout>
-        );
-    }
-}
+const ExchangeFinder = () => {
+    const postContext = useContext(PostContext);
 
-export default Blog;
+    const { getPosts, posts } = postContext;
+
+    useEffect(() => {
+        getPosts();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    console.log(posts);
+    return (
+        <Layout>
+            <div className="container">
+                <div className="row">
+                    <h1>Blog</h1>
+                    <News posts={posts} />;
+                </div>
+            </div>
+        </Layout>
+    );
+};
+
+export default ExchangeFinder;

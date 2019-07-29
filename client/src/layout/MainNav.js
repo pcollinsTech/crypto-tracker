@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
 import SideNav from "./SideNav";
 
@@ -32,11 +32,10 @@ class NavBar extends Component {
     }
     render() {
         return (
-            <React.Fragment>
+            <div className="nav-wrapper">
                 <Navbar
                     sticky="top"
                     id="navbar"
-                    bg="light"
                     expand="lg"
                     className="navbar navbar-expand-lg "
                     collapseOnSelect={true}
@@ -138,7 +137,7 @@ class NavBar extends Component {
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
-            </React.Fragment>
+            </div>
         );
     }
 }

@@ -17,22 +17,18 @@ const PostState = props => {
     // Search Users
     const getPosts = async () => {
         setLoading();
-        const res = await axios.get(
-            `http://jsonplaceholder.typicode.com/posts`
-        );
+        const res = await axios.get(`http://api.crypto.local/api/posts`);
         dispatch({
             type: GET_POSTS,
             payload: res.data
         });
     };
-    const getPost = async () => {
+    const getPost = async id => {
         setLoading();
-        const res = await axios.get(
-            `http://jsonplaceholder.typicode.com/posts`
-        );
+        const res = await axios.get(`http://api.crypto.local/api/post/${id}`);
         dispatch({
             type: GET_POST,
-            payload: res.data
+            payload: res
         });
     };
 

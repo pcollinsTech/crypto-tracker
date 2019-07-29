@@ -1,4 +1,4 @@
-import React, { useContext, Fragment, useEffect } from "react";
+import React, { useContext, Fragment } from "react";
 import MarketRow from "./MarketRow";
 import Spinner from "../../layout/Spinner";
 import ExchangeContext from "../../context/exchange/exchangeContext";

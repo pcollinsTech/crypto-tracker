@@ -6,7 +6,6 @@ const SearchForm = () => {
     const exchangeContext = useContext(ExchangeContext);
 
     const {
-        loading,
         cryptoOptions,
         countryOptions,
         paymentOptions,

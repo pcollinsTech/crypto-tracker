@@ -5,13 +5,13 @@ export default (state, action) => {
         case GET_POSTS:
             return {
                 ...state,
-                exchanges: action.payload,
+                posts: action.payload,
                 loading: false
             };
         case GET_POST:
             return {
                 ...state,
-                cryptos: action.payload,
+                post: action.payload,
                 loading: false
             };
         case SET_LOADING: {

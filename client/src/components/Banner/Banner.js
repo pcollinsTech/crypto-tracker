@@ -17,28 +17,45 @@ class Banner extends Component {
                     <div className="main-banner item-bg-one">
                         <div className="d-table">
                             <div className="d-table-cell">
-                                <div className="container">
-                                    <Particles />
-                                </div>
+                                <Particles />
                             </div>
                         </div>
                         <div className="animation-box1">
-                            <img src={this.props.animationImg1} alt="sliderimage" />
+                            <img
+                                src={this.props.animationImg1}
+                                alt="sliderimage"
+                            />
                         </div>
                         <div className="animation-box2">
-                            <img src={this.props.animationImg2} alt="sliderimage" />
+                            <img
+                                src={this.props.animationImg2}
+                                alt="sliderimage"
+                            />
                         </div>
                         <div className="animation-box3">
-                            <img src={this.props.animationImg3} alt="sliderimage" />
+                            <img
+                                src={this.props.animationImg3}
+                                alt="sliderimage"
+                            />
                         </div>
                         <div className="animation-box4">
-                            <img src={this.props.animationImg4} alt="sliderimage" />
+                            <img
+                                src={this.props.animationImg4}
+                                alt="sliderimage"
+                            />
                         </div>
                         <div className="animation-box6">
-                            <img src={this.props.animationImg5} alt="sliderimage" />
+                            <img
+                                src={this.props.animationImg5}
+                                alt="sliderimage"
+                            />
                         </div>
                         <div className="animation-box7">
-                            <img src={this.props.animationImg6} className="rotateme" alt="sliderimage" />
+                            <img
+                                src={this.props.animationImg6}
+                                className="rotateme"
+                                alt="sliderimage"
+                            />
                         </div>
                     </div>
                 </div>

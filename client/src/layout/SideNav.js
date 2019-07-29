@@ -30,7 +30,11 @@ export class SideNav extends Component {
                     <span />
                 </Nav.Link>
 
-                <Modal show={this.state.show} onHide={this.handleClose} className="right">
+                <Modal
+                    show={this.state.show}
+                    onHide={this.handleClose}
+                    className="right"
+                >
                     <Modal.Header closeButton />
                     <Modal.Body>
                         <div className="logo">
@@ -42,15 +46,18 @@ export class SideNav extends Component {
                         <p>{this.props.content}</p>
                         <ul className="modal-contact-info">
                             <li>
-                                <Icofont icon="icofont-google-map" /> <b>{this.props.locationbolt}</b>
+                                <Icofont icon="icofont-google-map" />{" "}
+                                <b>{this.props.locationbolt}</b>
                                 {this.props.locationnormal}
                             </li>
                             <li>
-                                <Icofont icon="icofont-ui-call" /> <b>{this.props.phonebolt}</b>
+                                <Icofont icon="icofont-ui-call" />{" "}
+                                <b>{this.props.phonebolt}</b>
                                 {this.props.phonenormal}
                             </li>
                             <li>
-                                <Icofont icon="icofont-envelope" /> <b>{this.props.mailbolot}</b>
+                                <Icofont icon="icofont-envelope" />{" "}
+                                <b>{this.props.mailbolot}</b>
                                 {this.props.mailnormal}
                             </li>
                         </ul>
@@ -105,10 +112,9 @@ SideNav.PropsTypes = {
     pinterestlink: PropTypes.string
 };
 SideNav.defaultProps = {
-    logotext: ".Exo",
-    logotextspan: "LOT.",
-    content:
-        "Exolot have much planned for the future, working with great clients and continued software development. If you'd like to join our team, then we'd also love to hear from you.",
+    logotext: "Crypto",
+    logotextspan: "Coach",
+    content: "Lorem ",
     locationbolt: "27 Division St",
     locationnormal: "New York, NY 10002, USA",
     phonebolt: "+0 (321) 984 754",

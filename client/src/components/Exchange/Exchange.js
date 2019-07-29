@@ -15,7 +15,7 @@ const Exchange = props => {
     }, []);
 
     const exchange = exchanges.find(
-        exchange => exchange.id == props.match.params.id
+        exchange => exchange.id === props.match.params.id
     );
     console.log(exchange);
     if (!exchange) {

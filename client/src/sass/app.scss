@@ -1,9 +1,5 @@
 //Exolot Theme Files
 
-@import "exolot_style";
-@import "exolot_popup";
-@import "exolot_responsive";
-
 @import "settings";
 
 //modules
@@ -12,3 +8,7 @@
 
 // components
 @import "components/postItem";
+@import "exolot_popup";
+@import "exolot_responsive";
+
+@import "exolot_style";

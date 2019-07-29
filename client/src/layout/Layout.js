@@ -1,18 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainNav from "./MainNav";
 import Footer from "./Footer";
 
 class Layout extends Component {
     render() {
+        console.log(this.props);
         return (
-            <div>
+            <Fragment>
                 <MainNav />
                 {/* <div className="container" style={{marginTop: "80px"}} > */}
-                <main>{this.props.children}</main>
+                <div>{this.props.children}</div>
                 {/* </div> */}
                 <Footer />
-            </div>
+            </Fragment>
         );
     }
 }

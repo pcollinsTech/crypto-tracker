@@ -273,16 +273,24 @@ button:focus {
 /*================================================
 Navbar Area CSS
 =================================================*/
+.nav-wrapper {
+    position: absolute;
+    right: 0;
+    left: 0;
+}
 .navbar {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: auto;
     padding: 20px 0;
     left: 0;
     top: 0;
+    color: $white;
     background-color: transparent !important;
     z-index: 999;
-
+    .navbar-nav .nav-item .nav-link {
+        color: $white !important;
+    }
     &.navbar-light.is-sticky {
         position: fixed;
         top: 0;
@@ -293,6 +301,9 @@ Navbar Area CSS
         background-color: #ffffff !important;
         box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.1);
         animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+        .navbar-nav .nav-item .nav-link {
+            color: $black !important;
+        }
     }
 }
 .navbar-light {
@@ -406,6 +417,8 @@ Navbar Area CSS
 Main Banner Area CSS
 =================================================*/
 .main-banner {
+    position: absolute;
+    top: 0;
     height: 100vh;
     overflow: hidden;
     background: {

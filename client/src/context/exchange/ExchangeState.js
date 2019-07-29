@@ -134,20 +134,23 @@ const ExchangeState = props => {
         console.log("excahngestate", cryptos);
         let data = [];
         if (state.filteredExchanges.length >= 1) {
-            cryptos.forEach(crypto => {
-                state.filteredExchanges.map((exchange, id) => {
+            return cryptos.forEach(crypto => {
+                state.filteredExchanges.map(exchange => {
                     if (exchange.cryptos.includes(crypto.value)) {
                         return data.push(exchange);
                     }
+                    // eslint-disable-next-line array-callback-return
+                    return;
                 });
             });
         } else if (state.filteredExchanges.length === 0) {
-            state.exchanges.map(exchange => {
+            return state.exchanges.map(exchange => {
                 cryptos.forEach(crypto => {
                     console.log("SUP");
                     if (exchange.cryptos.includes(crypto.value)) {
                         return data.push(exchange);
                     }
+                    return;
                 });
             });
         }
@@ -190,7 +193,6 @@ const ExchangeState = props => {
     const filterByFiats = fiats => {
         setLoading();
 
-        console.log("HIHI", fiats);
         var data = [];
         if (state.filteredExchanges.length >= 1) {
             state.filteredExchanges.map(exchange => {
@@ -247,7 +249,6 @@ const ExchangeState = props => {
     const setSearch = filters => {
         setLoading();
         const newExhangeList = [];
-        console.log("state setsearch", state.exchanges);
         sortExchange(filters, state.exchanges);
 
         console.log("Set State", filters);

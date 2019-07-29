@@ -12,6 +12,7 @@ import Academy from "./pages/academy";
 import ExchangeFinder from "./pages/exchangfinder";
 import Blog from "./pages/blog";
 import ExchangeState from "./context/exchange/ExchangeState";
+import PostState from "./context/post/PostState";
 import Exchange from "./components/Exchange";
 
 class App extends Component {
@@ -20,15 +21,24 @@ class App extends Component {
     render() {
         return (
             <ExchangeState>
-                <Router>
-                    <Route exact path="/" component={Index} />
-                    <Route exact path="/academy" component={Academy} />
-                    <Route exact path="/get-started" component={GetStarted} />
-                    <Route path="/about" component={About} />
-                    <Route path="/exchange/:id" component={Exchange} />
-                    <Route path="/blog" component={Blog} />
-                    <Route path="/exchange-finder" component={ExchangeFinder} />
-                </Router>
+                <PostState>
+                    <Router>
+                        <Route exact path="/" component={Index} />
+                        <Route exact path="/academy" component={Academy} />
+                        <Route
+                            exact
+                            path="/get-started"
+                            component={GetStarted}
+                        />
+                        <Route path="/about" component={About} />
+                        <Route path="/exchange/:id" component={Exchange} />
+                        <Route path="/blog" component={Blog} />
+                        <Route
+                            path="/exchange-finder"
+                            component={ExchangeFinder}
+                        />
+                    </Router>
+                </PostState>
             </ExchangeState>
         );
     }
