@@ -1,9 +1,9 @@
 import React from "react";
 import Layout from "../layout/Layout";
 
-const Academy = () => {
+const Academy = props => {
     return (
-        <Layout>
+        <Layout props={props}>
             <h1>Academy</h1>
         </Layout>
     );

@@ -7,22 +7,26 @@ import SideNav from "./SideNav";
 class NavBar extends Component {
     componentDidMount() {
         let elem = document.getElementById("navbar");
-        document.addEventListener("scroll", () => {
-            if (window.scrollY > 170) {
-                elem.classList.add("is-sticky");
-            } else {
-                elem.classList.remove("is-sticky");
-            }
-        });
-        let scrollWithOffset = (el, offset) => {
-            const elementPosition = el.offsetTop - offset;
-            window.scroll({
-                top: elementPosition,
-                left: 0,
-                behavior: "smooth"
+        if (this.props.router.location.pathname === "/") {
+            document.addEventListener("scroll", () => {
+                if (window.scrollY > 170) {
+                    elem.classList.add("is-sticky");
+                } else {
+                    elem.classList.remove("is-sticky");
+                }
             });
-        };
-        this.setState({ scrollWithOffset });
+            let scrollWithOffset = (el, offset) => {
+                const elementPosition = el.offsetTop - offset;
+                window.scroll({
+                    top: elementPosition,
+                    left: 0,
+                    behavior: "smooth"
+                });
+            };
+            this.setState({ scrollWithOffset });
+        } else {
+            elem.classList.add("is-sticky");
+        }
     }
 
     closeNavbar() {

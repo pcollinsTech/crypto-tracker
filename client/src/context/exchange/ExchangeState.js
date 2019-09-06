@@ -49,6 +49,8 @@ const ExchangeState = props => {
     const getExchanges = async () => {
         setLoading();
         const res = await axios.get(`http://api.crypto.local/api/exchanges`);
+        console.log("EXCHANGES", res.data);
+
         dispatch({
             type: GET_EXCHANGES,
             payload: res.data
@@ -59,6 +61,7 @@ const ExchangeState = props => {
         setLoading();
         const res = await axios.get(`http://api.crypto.local/api/cryptos`);
         setCryptos(res.data);
+        console.log("CRYPTOS", res.data);
         dispatch({
             type: GET_CRYPTOS,
             payload: res.data
@@ -68,6 +71,7 @@ const ExchangeState = props => {
         let options = data.map(stat => {
             return { value: stat.id, label: `${stat.name} - ${stat.symbol}` };
         });
+
         dispatch({
             type: SET_CRYPTO_OPTIONS,
             payload: options
@@ -130,13 +134,14 @@ const ExchangeState = props => {
 
     const filterByCryptos = cryptos => {
         setLoading();
-
         console.log("excahngestate", cryptos);
         let data = [];
         if (state.filteredExchanges.length >= 1) {
-            return cryptos.forEach(crypto => {
+            cryptos.forEach(crypto => {
                 state.filteredExchanges.map(exchange => {
+                    console.log("Echnage", exchange);
                     if (exchange.cryptos.includes(crypto.value)) {
+                        console.log("Echnage included!", exchange);
                         return data.push(exchange);
                     }
                     // eslint-disable-next-line array-callback-return
@@ -144,9 +149,9 @@ const ExchangeState = props => {
                 });
             });
         } else if (state.filteredExchanges.length === 0) {
-            return state.exchanges.map(exchange => {
-                cryptos.forEach(crypto => {
-                    console.log("SUP");
+            state.exchanges.map(exchange => {
+                console.log("EXCHANGE!!", exchange);
+                return cryptos.forEach(crypto => {
                     if (exchange.cryptos.includes(crypto.value)) {
                         return data.push(exchange);
                     }
@@ -155,6 +160,7 @@ const ExchangeState = props => {
             });
         }
         let filteredData = removeDuplicates(data, "id");
+
         dispatch({
             type: FILTER_BY_CRYPTOS,
             payload: filteredData
@@ -168,7 +174,7 @@ const ExchangeState = props => {
         var data = [];
         if (state.filteredExchanges.length >= 1) {
             state.filteredExchanges.map(exchange => {
-                countries.forEach(country => {
+                return countries.forEach(country => {
                     if (exchange.counties.includes(country.value)) {
                         return data.push(exchange);
                     }
@@ -176,17 +182,17 @@ const ExchangeState = props => {
             });
         } else {
             state.exchanges.map(exchange => {
-                countries.forEach(country => {
+                return countries.forEach(country => {
                     if (exchange.counties.includes(country.value)) {
                         return data.push(exchange);
                     }
                 });
             });
         }
-
+        let filteredData = removeDuplicates(data, "id");
         dispatch({
             type: FILTER_BY_COUNTRIES,
-            payload: data
+            payload: filteredData
         });
     };
 
@@ -196,7 +202,7 @@ const ExchangeState = props => {
         var data = [];
         if (state.filteredExchanges.length >= 1) {
             state.filteredExchanges.map(exchange => {
-                fiats.forEach(fiat => {
+                return fiats.forEach(fiat => {
                     if (exchange.fiats.includes(fiat.value)) {
                         return data.push(exchange);
                     }
@@ -204,7 +210,7 @@ const ExchangeState = props => {
             });
         } else {
             state.exchanges.map(exchange => {
-                fiats.forEach(fiat => {
+                return fiats.forEach(fiat => {
                     if (exchange.fiats.includes(fiat.value)) {
                         return data.push(exchange);
                     }
@@ -212,9 +218,10 @@ const ExchangeState = props => {
             });
         }
 
+        let filteredData = removeDuplicates(data, "id");
         dispatch({
-            type: FILTER_BY_FIATS,
-            payload: data
+            type: FILTER_BY_COUNTRIES,
+            payload: filteredData
         });
     };
 
@@ -224,7 +231,7 @@ const ExchangeState = props => {
         var data = [];
         if (state.filteredExchanges.length >= 1) {
             state.filteredExchanges.map(exchange => {
-                payments.forEach(payment => {
+                return payments.forEach(payment => {
                     if (exchange.payments.includes(payment.value)) {
                         return data.push(exchange);
                     }
@@ -232,17 +239,17 @@ const ExchangeState = props => {
             });
         } else {
             state.exchanges.map(exchange => {
-                payments.forEach(payment => {
+                return payments.forEach(payment => {
                     if (exchange.payments.includes(payment.value)) {
                         return data.push(exchange);
                     }
                 });
             });
         }
-
+        let filteredData = removeDuplicates(data, "id");
         dispatch({
-            type: FILTER_BY_PAYMENTS,
-            payload: data
+            type: FILTER_BY_COUNTRIES,
+            payload: filteredData
         });
     };
 

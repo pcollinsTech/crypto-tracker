@@ -22,7 +22,7 @@ const Exchange = props => {
         return <Spinner />;
     } else {
         return (
-            <Layout>
+            <Layout props={props}>
                 <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="single-team">
                         <img src={exchange.img} alt="team-img" />

@@ -1,5 +1,9 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from "react";
+import {
+    BrowserRouter as Router,
+    // Switch,
+    Route
+} from "react-router-dom";
 // import Coins from './components/Coins';
 // import Coin from './components/Coin';
 import "./sass/app.scss";
@@ -14,34 +18,58 @@ import Blog from "./pages/blog";
 import ExchangeState from "./context/exchange/ExchangeState";
 import PostState from "./context/post/PostState";
 import Exchange from "./components/Exchange";
+import Article from "./components/Article";
 
-class App extends Component {
-    searchExchanges = state => {};
-
-    render() {
-        return (
-            <ExchangeState>
-                <PostState>
-                    <Router>
-                        <Route exact path="/" component={Index} />
-                        <Route exact path="/academy" component={Academy} />
-                        <Route
-                            exact
-                            path="/get-started"
-                            component={GetStarted}
-                        />
-                        <Route path="/about" component={About} />
-                        <Route path="/exchange/:id" component={Exchange} />
-                        <Route path="/blog" component={Blog} />
-                        <Route
-                            path="/exchange-finder"
-                            component={ExchangeFinder}
-                        />
-                    </Router>
-                </PostState>
-            </ExchangeState>
-        );
-    }
-}
+const App = () => {
+    // const searchExchanges = state => {};
+    return (
+        <ExchangeState>
+            <PostState>
+                <Router>
+                    <Route
+                        exact
+                        path="/"
+                        render={props => <Index {...props} />}
+                    />
+                    <Route
+                        exact
+                        path="/academy"
+                        render={props => <Academy {...props} />}
+                    />
+                    <Route
+                        exact
+                        path="/get-started"
+                        render={props => <GetStarted {...props} />}
+                    />
+                    <Route
+                        exact
+                        path="/about"
+                        render={props => <About {...props} />}
+                    />
+                    <Route
+                        exact
+                        path="/exchange/:id"
+                        render={props => <Exchange {...props} />}
+                    />
+                    <Route
+                        exact
+                        path="/blog"
+                        render={props => <Blog {...props} />}
+                    />
+                    <Route
+                        exact
+                        path="/blog/:slug"
+                        render={props => <Article {...props} />}
+                    />
+                    <Route
+                        exact
+                        path="/exchange-finder"
+                        render={props => <ExchangeFinder {...props} />}
+                    />
+                </Router>
+            </PostState>
+        </ExchangeState>
+    );
+};
 
 export default App;

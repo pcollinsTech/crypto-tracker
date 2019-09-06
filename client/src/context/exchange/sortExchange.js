@@ -48,16 +48,16 @@ export default function sortExchange(filters, exchanges) {
 
     exchanges.map(exchange => {
         if (payments.length >= 1) {
-            sortPayment(exchange, payments);
+            return sortPayment(exchange, payments);
         }
         if (fiats.length >= 1) {
-            sortFiat(exchange, fiats);
+            return sortFiat(exchange, fiats);
         }
         if (cryptos.length >= 1) {
-            sortCrypto(exchange, cryptos);
+            return sortCrypto(exchange, cryptos);
         }
         if (countries.length >= 1) {
-            sortCountry(exchange, countries);
+            return sortCountry(exchange, countries);
         }
     });
 }

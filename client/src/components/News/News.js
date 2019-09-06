@@ -12,9 +12,9 @@ const News = ({ posts }) => {
 
                 <div className="post-content">
                     <h3>
-                        <a href={post.title}>{post.title}</a>
+                        <a href={`blog/${post.slug}`}>{post.title}</a>
                     </h3>
-                    <a href={post.title} className="read-more">
+                    <a href={`blog/${post.slug}`} className="read-more">
                         Read More
                     </a>
                 </div>

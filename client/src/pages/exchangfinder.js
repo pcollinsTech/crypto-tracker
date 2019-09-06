@@ -4,7 +4,7 @@ import AssetMarket from "../components/AssetMarket";
 import ExchangeContext from "../context/exchange/exchangeContext";
 import Layout from "../layout/Layout";
 
-const ExchangeFinder = () => {
+const ExchangeFinder = props => {
     const exchangeContext = useContext(ExchangeContext);
 
     const {
@@ -25,7 +25,7 @@ const ExchangeFinder = () => {
     }, []);
 
     return (
-        <Layout>
+        <Layout props={props}>
             <div className="container">
                 <SearchForm />
                 <AssetMarket />

@@ -23,12 +23,12 @@ const PostState = props => {
             payload: res.data
         });
     };
-    const getPost = async id => {
+    const getPost = async slug => {
         setLoading();
-        const res = await axios.get(`http://api.crypto.local/api/post/${id}`);
+        const res = await axios.get(`http://api.crypto.local/api/post/${slug}`);
         dispatch({
             type: GET_POST,
-            payload: res
+            payload: res.data
         });
     };
 

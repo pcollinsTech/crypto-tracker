@@ -1,11 +1,12 @@
-import React from "react";
-import Layout from "../layout/Layout";
+import React, { Fragment } from "react";
 import Banner from "../components/Banner";
 import Welcome from "../components/Welcome";
 import ContactUs from "../components/ContactUs";
-const Index = () => {
+import Layout from "../layout/Layout";
+
+const Index = props => {
     return (
-        <Layout>
+        <Layout props={props}>
             <Banner />
             <Welcome />
             <ContactUs />
